@@ -39,6 +39,16 @@ packageVersion("zeekr")
 
 ```
 
+```{r ex-01}
+loc <- pcap_to_zeek(system.file("pcap/ssh.pcap", package = "zeekr"))
+
+list.files(loc)
+
+zeek <- read_zeek_logs(loc)
+
+str(zeek, 3)
+```
+
 ## zeekr Metrics
 
 ```{r cloc, echo=FALSE}

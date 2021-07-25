@@ -4,9 +4,11 @@
 \name{zeekr}
 \alias{zeekr}
 \alias{zeekr-package}
-\title{...}
+\title{Tools to Make Analyses Using Zeek Easier}
 \description{
-A good description goes here otherwise CRAN checks fail.
+\href{https://zeek.org/}{Zeek} is an open source network security monitoring
+system. Tools are provided to make it a bit easier to work with Zeek to perform
+analyses with R.
 }
 \seealso{
 Useful links:
