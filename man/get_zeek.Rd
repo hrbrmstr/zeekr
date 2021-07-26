@@ -10,5 +10,5 @@ get_zeek()
 Opens the default browser to the place where you can get Zeek.
 }
 \examples{
-if (interactive) get_zeek()
+if (interactive()) get_zeek()
 }

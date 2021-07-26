@@ -4,7 +4,7 @@
 #'
 #' @export
 #' @examples
-#' if (interactive) get_zeek()
+#' if (interactive()) get_zeek()
 get_zeek <- function() {
   utils::browseURL("https://zeek.org/get-zeek/")
 }
