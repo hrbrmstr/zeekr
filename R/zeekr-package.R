@@ -10,6 +10,6 @@
 #' @author Bob Rudis (bob@@rud.is)
 #' @import arrow
 #' @import ndjson
-#' @importFrom utils browseURL
+#' @importFrom utils browseURL help
 #' @importFrom tools file_path_sans_ext file_ext
 "_PACKAGE"

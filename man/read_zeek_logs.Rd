@@ -16,7 +16,13 @@ Read zeek logs from a processed PCAP into a list
 Logs must be in Parquet or JSON format.
 }
 \examples{
-loc <- pcap_to_zeek(system.file("pcap/ssh.pcap", package = "zeekr"))
-read_zeek_logs(loc)
-unlink(loc) # don't do this IRL until you're done working with or saving.
+loc <- tryCatch(
+  pcap_to_zeek(system.file("pcap/ssh.pcap", package = "zeekr")),
+  error = function(e) message("No Zeek")
+)
+
+if (!is.null(loc)) {
+  read_zeek_logs(loc)
+  unlink(loc) # don't do this IRL until you're done working with or saving.
+}
 }

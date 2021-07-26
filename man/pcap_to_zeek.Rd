@@ -32,7 +32,13 @@ environment variable \code{ZEEK_PATH} as a hint where \code{\link[=find_zeek]{fi
 look for the \code{zeek} binary.
 }
 \examples{
-loc <- pcap_to_zeek(system.file("pcap/ssh.pcap", package = "zeekr"))
-read_zeek_logs(loc)
-unlink(loc) # don't do this IRL until you're done working with or saving.
+loc <- tryCatch(
+  pcap_to_zeek(system.file("pcap/ssh.pcap", package = "zeekr")),
+  error = function(e) message("No Zeek")
+)
+
+if (!is.null(loc)) {
+  read_zeek_logs(loc)
+  unlink(loc) # don't do this IRL until you're done working with or saving.
+}
 }

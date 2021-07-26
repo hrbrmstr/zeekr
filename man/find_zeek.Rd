@@ -17,5 +17,8 @@ Use the environment variable \code{ZEEK_PATH} or specify the directory in
 the call to this function.
 }
 \examples{
-find_zeek()
+loc <- tryCatch(
+  find_zeek(),
+  error = function(e) message("No Zeek")
+)
 }

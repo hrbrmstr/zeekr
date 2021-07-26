@@ -4,9 +4,15 @@
 #' @param log_dir directory of zeek logs
 #' @export
 #' @examples
-#' loc <- pcap_to_zeek(system.file("pcap/ssh.pcap", package = "zeekr"))
-#' read_zeek_logs(loc)
-#' unlink(loc) # don't do this IRL until you're done working with or saving.
+#' loc <- tryCatch(
+#'   pcap_to_zeek(system.file("pcap/ssh.pcap", package = "zeekr")),
+#'   error = function(e) message("No Zeek")
+#' )
+#'
+#' if (!is.null(loc)) {
+#'   read_zeek_logs(loc)
+#'   unlink(loc) # don't do this IRL until you're done working with or saving.
+#' }
 read_zeek_logs <- function(log_dir) {
 
   log_dir <- path.expand(log_dir[1])

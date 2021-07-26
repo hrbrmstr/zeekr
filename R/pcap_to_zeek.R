@@ -15,9 +15,15 @@
 #'       look for the `zeek` binary.
 #' @export
 #' @examples
-#' loc <- pcap_to_zeek(system.file("pcap/ssh.pcap", package = "zeekr"))
-#' read_zeek_logs(loc)
-#' unlink(loc) # don't do this IRL until you're done working with or saving.
+#' loc <- tryCatch(
+#'   pcap_to_zeek(system.file("pcap/ssh.pcap", package = "zeekr")),
+#'   error = function(e) message("No Zeek")
+#' )
+#'
+#' if (!is.null(loc)) {
+#'   read_zeek_logs(loc)
+#'   unlink(loc) # don't do this IRL until you're done working with or saving.
+#' }
 pcap_to_zeek <- function(pcap, out_dir = tempfile(pattern = "zeek"), zeek_opts = c(), ...) {
 
   pcap <- path.expand(pcap[1])
@@ -84,7 +90,10 @@ pcap_to_zeek <- function(pcap, out_dir = tempfile(pattern = "zeek"), zeek_opts =
 #' @export
 #' @return length 1 character vector of the path to the zeek binary or `""`
 #' @examples
-#' find_zeek()
+#' loc <- tryCatch(
+#'   find_zeek(),
+#'   error = function(e) message("No Zeek")
+#' )
 find_zeek <- function(path = Sys.getenv("ZEEK_PATH", "")) {
 
   if (path != "") {

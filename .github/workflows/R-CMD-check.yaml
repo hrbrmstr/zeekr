@@ -6,7 +6,7 @@ on:
       - batman
   pull_request:
     branches:
-      - batmsn
+      - batman
 
 name: R-CMD-check
 
@@ -16,6 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
+      - name: Install Zeek
+        uses: brew install zeek
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck"))
