@@ -98,7 +98,7 @@ find_zeek <- function(path = Sys.getenv("ZEEK_PATH", "")) {
 
   if (path != "") {
      Sys.setenv(
-       PATH = paste0(path, Sys.getenv("PATH"), sep = .Platform$path.sep)
+       PATH = paste0(c(path, Sys.getenv("PATH")), collapse = .Platform$path.sep)
       )
   }
 
